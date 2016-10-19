@@ -19,6 +19,7 @@
 						<bndrun>com.flairbit.example.cassandra.bndrun</bndrun>
 					</bndruns>
 					<targetDir>.</targetDir>
+				<failOnChanges>false</failOnChanges>
 				</configuration>
 				<executions>
 					<execution>

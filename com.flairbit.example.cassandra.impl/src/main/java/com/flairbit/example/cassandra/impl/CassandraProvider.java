@@ -15,7 +15,7 @@ import com.datastax.driver.mapping.Mapper;
 import com.datastax.driver.mapping.MappingManager;
 import com.flairbit.example.cassandra.api.Cassandra;
 
-@Component(name = "com.flairbit.example.cassandra")
+@Component(name = "com.flairbit.example.cassandra", immediate=true)
 public class CassandraProvider implements Cassandra {
 
 	private final static String KEYSPACE = "eclipsecon";
@@ -28,9 +28,16 @@ public class CassandraProvider implements Cassandra {
 	
 	@Activate
 	public void activate() {
-		session = Cluster.builder().addContactPoint("localhost").build().connect(KEYSPACE);
-		MappingManager mappingManager = new MappingManager(session);
-		mapper = mappingManager.mapper(Message.class);
+		try {
+			session = Cluster.builder().addContactPoint("localhost").build().connect(KEYSPACE);
+			MappingManager mappingManager = new MappingManager(session);
+			mapper = mappingManager.mapper(Message.class);
+		} catch (Throwable tr) {
+			tr.printStackTrace(System.err);
+			if (session != null) {
+				session.close();
+			}
+		}
 	}
 	
 	@Deactivate
