@@ -1,0 +1,4 @@
+Bundle-Description: \
+	An API bundle to log messages in cassandra
+
+Export-Package: com.flairbit.example.cassandra.api

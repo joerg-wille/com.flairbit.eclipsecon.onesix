@@ -1,0 +1,6 @@
+Bundle-Description: 				\
+	Provides a simple implementation for an eval parser
+
+Import-Package: com.flairbit.example.cassandra.api
+
+Export-Package: com.flairbit.example.cassandra.api

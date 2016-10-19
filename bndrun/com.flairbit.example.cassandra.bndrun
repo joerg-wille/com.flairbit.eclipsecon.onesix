@@ -1,0 +1,59 @@
+-standalone: 
+
+-plugin.examples.eval = \
+	aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+		snapshotUrls=https://oss.sonatype.org/content/repositories/osgi/; \
+		releaseUrls=https://repo1.maven.org/maven2/; \
+		pom=${.}/pom.xml; \
+		name=com.flairbit.example.cassandra; \
+		location=${.}/target/cached.xml
+
+-runrequires: 	\
+	osgi.identity; \
+		filter:='(osgi.identity=com.flairbit.example.cassandra.impl)'
+
+-runfw: 		org.eclipse.osgi;version='[3.10.100.v20150529-1857,3.10.100.v20150529-1857]'
+
+-runtrace: 		false
+
+-runbundles: \
+	com.flairbit.example.cassandra.impl; version='[1.0.0,1.0.1)',\
+	org.apache.felix.configadmin; version='[1.8.8,1.8.9)',\
+	org.apache.felix.log; version='[1.0.1,1.0.2)',\
+	org.apache.felix.scr; version='[2.0.2,2.0.3)',\
+	org.eclipse.equinox.metatype; version='[1.4.100,1.4.101)',\
+	org.osgi.service.metatype; version='[1.3.0,1.3.1)',\
+	com.datastax.driver.core;version='[3.1.0,3.1.1)',\
+	com.datastax.driver.extras;version='[3.1.0,3.1.1)',\
+	com.datastax.driver.mapping;version='[3.1.0,3.1.1)',\
+	com.google.guava;version='[19.0.0,19.0.1)',\
+	io.dropwizard.metrics.core;version='[3.1.2,3.1.3)',\
+	io.netty.buffer;version='[4.0.37,4.0.38)',\
+	io.netty.codec;version='[4.0.37,4.0.38)',\
+	io.netty.common;version='[4.0.37,4.0.38)',\
+	io.netty.handler;version='[4.0.37,4.0.38)',\
+	io.netty.transport;version='[4.0.37,4.0.38)',\
+	joda-time;version='[2.8.2,2.8.3)',\
+	org.apache.commons.lang3;version='[3.4.0,3.4.1)'
+
+#
+# OSGi enRoute setting. These settings
+# fixup some of the issues around equinox 
+# defaults.
+#
+
+-runee: 						JavaSE-1.8
+-resolve.effective:				resolve, active
+
+-runproperties.eqnx: 				\
+	osgi.console.enable.builtin=false, \
+	osgi.console=, \
+	org.osgi.service.http.port=8080
+
+-runpath.eqnx: 					osgi.enroute.equinox.log.adapter
+
+-runrequires.eqnx: \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)'
+
+-runsystempackages.eqnx:		javax.script
+-runsystemcapabilities.dflt: 	${native_capability}
