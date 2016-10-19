@@ -16,6 +16,7 @@
 	<modules>
 		<module>com.flairbit.example.cassandra.api</module>
 		<module>com.flairbit.example.cassandra.impl</module>
+		<module>com.flairbit.example.cassandra.cmd</module>
 	</modules>
 
 	<build>

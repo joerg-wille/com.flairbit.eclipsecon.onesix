@@ -1,0 +1,69 @@
+-standalone: 
+
+-plugin.examples.eval = \
+	aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+		snapshotUrls=https://oss.sonatype.org/content/repositories/osgi/; \
+		releaseUrls=https://repo1.maven.org/maven2/; \
+		pom=${.}/pom.xml; \
+		name=com.flairbit.example.cassandra; \
+		location=${.}/target/cached.xml
+
+-runrequires: 	\
+	osgi.identity;filter:='(osgi.identity=com.flairbit.example.cassandra.impl)', \
+	osgi.identity;filter:='(osgi.identity=osgi.enroute.gogo.shell.provider)', \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)', \
+	osgi.identity;filter:='(osgi.identity=com.flairbit.example.cassandra.cmd)'
+	
+-runfw: 		org.eclipse.osgi;version='[3.10.100.v20150529-1857,3.10.100.v20150529-1857]'
+
+-runtrace: 		false
+
+-runproperties: org.osgi.framework.bootdelegation=' \
+        sun.*'
+
+-runbundles: \
+	com.datastax.driver.core; version='[3.1.1,3.1.2)',\
+	com.datastax.driver.mapping; version='[3.1.1,3.1.2)',\
+	com.flairbit.example.cassandra.api; version='[1.0.0,1.0.1)',\
+	com.flairbit.example.cassandra.cmd; version='[1.0.0,1.0.1)',\
+	com.flairbit.example.cassandra.impl; version='[1.0.0,1.0.1)',\
+	com.google.guava; version='[19.0.0,19.0.1)',\
+	io.dropwizard.metrics.core; version='[3.1.2,3.1.3)',\
+	io.netty.buffer; version='[4.0.37,4.0.38)',\
+	io.netty.codec; version='[4.0.37,4.0.38)',\
+	io.netty.common; version='[4.0.37,4.0.38)',\
+	io.netty.handler; version='[4.0.37,4.0.38)',\
+	io.netty.transport; version='[4.0.37,4.0.38)',\
+	log4j; version='[1.2.17,1.2.18)',\
+	org.apache.felix.configadmin; version='[1.8.8,1.8.9)',\
+	org.apache.felix.gogo.command; version='[0.16.0,0.16.1)',\
+	org.apache.felix.gogo.runtime; version='[0.16.2,0.16.3)',\
+	org.apache.felix.log; version='[1.0.1,1.0.2)',\
+	org.apache.felix.scr; version='[2.0.2,2.0.3)',\
+	org.eclipse.equinox.metatype; version='[1.4.100,1.4.101)',\
+	org.osgi.service.metatype; version='[1.3.0,1.3.1)',\
+	osgi.enroute.gogo.shell.provider; version='[2.0.0,2.0.1)',\
+	slf4j.api; version='[1.7.7,1.7.8)',\
+	slf4j.log4j12; version='[1.6.1,1.6.2)'
+	
+#
+# OSGi enRoute setting. These settings
+# fixup some of the issues around equinox 
+# defaults.
+#
+
+-runee: 						JavaSE-1.8
+-resolve.effective:				resolve, active
+
+-runproperties.eqnx: 				\
+	osgi.console.enable.builtin=false, \
+	osgi.console=, \
+	org.osgi.service.http.port=8080
+
+-runpath.eqnx: 					osgi.enroute.equinox.log.adapter
+
+-runrequires.eqnx: \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)'
+
+-runsystempackages.eqnx:		javax.script
+-runsystemcapabilities.dflt: 	${native_capability}
