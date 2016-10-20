@@ -1,5 +1,6 @@
 package example.cassandra.itest;
 
+import java.time.Instant;
 import java.util.UUID;
 
 import org.osgi.framework.BundleContext;
@@ -19,9 +20,7 @@ public class IntegrationTest extends TestCase {
 		assertNotNull("No such service", ref);
 		Cassandra cassandra = context.getService(ref);
 		assertNotNull("Service object init error", cassandra);
-		UUID key = cassandra.trace("test message - " + UUID.randomUUID());
+		UUID key = cassandra.trace("test message generate at " + Instant.now());
 		assertNotNull(key);
-		
-		System.out.println("Hey, I really got executed!");
 	}
 }

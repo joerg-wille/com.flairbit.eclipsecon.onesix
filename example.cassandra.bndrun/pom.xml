@@ -47,13 +47,6 @@
 			<artifactId>osgi.enroute.pom.distro</artifactId>
 			<version>2.0.0</version>
 		</dependency>
-	</dependencies>
-</project>
-
-
-
-
-		<!-- 
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-common</artifactId>
@@ -98,5 +91,6 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.4</version>
-		</dependency>
-		 -->
+		</dependency>		
+	</dependencies>
+</project>

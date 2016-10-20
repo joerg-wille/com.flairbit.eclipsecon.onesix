@@ -18,7 +18,6 @@
 		<module>com.flairbit.example.cassandra.impl</module>
 		<module>com.flairbit.example.cassandra.cmd</module>
 		<module>com.flairbit.example.cassandra.itest</module>
-		<module>example.cassandra.itest.bndrun</module>
 	</modules>
 
 	<build>
