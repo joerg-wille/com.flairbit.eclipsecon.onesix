@@ -1,0 +1,4 @@
+Bundle-Description: 				\
+	Integration Test bundle for the Cassandra service
+
+Test-Cases: ${classes;NAMED;*Test}

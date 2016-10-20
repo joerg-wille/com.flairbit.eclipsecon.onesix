@@ -1,30 +1,38 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>com.flairbit.eclipsecon.onesix</groupId>
 		<artifactId>example.cassandra.parent</artifactId>
 		<version>1.0.0</version>
+		<relativePath>..</relativePath>
 	</parent>
-	<artifactId>example.cassandra.cmd.bndrun</artifactId>
-	<packaging>jar</packaging>
+
+	<artifactId>example.cassandra.itest.bndrun</artifactId>
+
+	<packaging>pom</packaging>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
-				<artifactId>bnd-export-maven-plugin</artifactId>
+				<artifactId>bnd-testing-maven-plugin</artifactId>
 				<version>3.4.0-SNAPSHOT</version>
 				<configuration>
 					<resolve>true</resolve>
 					<bndruns>
-						<bndrun>com.flairbit.example.cassandra.bndrun</bndrun>
+						<bndrun>itest.bndrun</bndrun>
 					</bndruns>
 					<targetDir>.</targetDir>
-				<failOnChanges>false</failOnChanges>
+					<failOnChanges>false</failOnChanges>
 				</configuration>
 				<executions>
 					<execution>
 						<goals>
-							<goal>export</goal>
+							<goal>testing</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -32,6 +40,8 @@
 		</plugins>
 	</build>
 	<dependencies>
+		<!-- To be able to resolve our own projects we need to list the 
+		     dependencies we are allowed to resolve against. -->
 		<dependency>
 			<groupId>com.flairbit.eclipsecon.onesix</groupId>
 			<artifactId>com.flairbit.example.cassandra.api</artifactId>
@@ -44,7 +54,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.flairbit.eclipsecon.onesix</groupId>
-			<artifactId>com.flairbit.example.cassandra.cmd</artifactId>
+			<artifactId>com.flairbit.example.cassandra.itest</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>
@@ -52,20 +62,6 @@
 			<artifactId>osgi.enroute.pom.distro</artifactId>
 			<version>2.0.0</version>
 		</dependency>
-	</dependencies>
-</project>
-
-
-
-
-
-
-
-
-
-
-
-		<!-- 
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-common</artifactId>
@@ -111,4 +107,5 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.4</version>
 		</dependency>
-		-->
+	</dependencies>
+</project>

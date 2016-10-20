@@ -54,8 +54,8 @@ public class CassandraProvider implements Cassandra {
 
 	@Override
 	public String getMessage(UUID key) {
-		 return Optional.ofNullable(mapper.get(key))
-				 .orElseGet(() -> new Message()).getMessage();
+		 return Optional.ofNullable(mapper.get(key)).
+				 map(Message::getMessage).orElse(null);
 	}
 
 }
