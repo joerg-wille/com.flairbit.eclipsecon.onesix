@@ -22,8 +22,6 @@ Install Apache Cassandra: the simplest way is to spin out Cassandra through dock
 
 	$ docker run --name some-cassandra -d cassandra:latest -p 9144:9144
 
-Then connect to cassandra through cqlsh and execute the `com.flairbit.example.cassandra.api/cql-snapshot.cql` script.
-
 There are no other requirements other than Java and Maven.
 
 ## Run the projects
