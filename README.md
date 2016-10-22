@@ -20,7 +20,7 @@ The workspace is made of the following projects:
 ## Requirements
 Install Apache Cassandra: the simplest way is to spin out Cassandra through docker:
 
-	$ docker run --name some-cassandra -d cassandra:latest -p 9042:9042
+	$ docker run --name some-cassandra -p 9042:9042 -d cassandra:latest
 
 There are no other requirements other than Java and Maven.
 
