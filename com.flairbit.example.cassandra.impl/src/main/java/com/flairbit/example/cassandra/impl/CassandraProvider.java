@@ -22,7 +22,8 @@ public class CassandraProvider implements Cassandra {
 	private final static String KEYSPACE = "eclipsecon";
 	private final static String CREATE_KS_CQL = "CREATE KEYSPACE IF NOT EXISTS " + KEYSPACE + 
 			" WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1};";
-	private final static String CREATE_TABLE_CQL = "CREATE TABLE " + KEYSPACE +".kvs (key UUID PRIMARY KEY, value TEXT);";
+	private final static String CREATE_TABLE_CQL = "CREATE TABLE " + 
+			KEYSPACE +".kvs (key UUID PRIMARY KEY, value TEXT);";
 	
 	@Reference
 	private LogService log;
