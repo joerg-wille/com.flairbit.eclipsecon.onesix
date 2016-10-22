@@ -3,3 +3,6 @@
 **/.settings/**
 **/.project
 **/.classpath
+example.cassandra.bndrun/com.flairbit.example.cassandra.jar
+example.cassandra.cmd.bndrun/com.flairbit.example.cassandra.jar
+example.cassandra.itest.bndrun/TEST-com.flairbit.example.cassandra.itest-1.0.0.xml
