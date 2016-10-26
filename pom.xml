@@ -18,6 +18,8 @@
 		<module>com.flairbit.example.cassandra.impl</module>
 		<module>com.flairbit.example.cassandra.cmd</module>
 		<module>com.flairbit.example.cassandra.itest</module>
+		<module>example.cassandra.itest.bndrun</module>
+		<module>example.cassandra.cmd.bndrun</module>
 	</modules>
 
 	<build>
@@ -44,7 +46,7 @@
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-maven-plugin</artifactId>
-				<version>3.3.0</version>
+				<version>3.4.0-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<goals>
