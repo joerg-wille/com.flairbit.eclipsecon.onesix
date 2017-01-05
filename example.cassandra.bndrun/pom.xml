@@ -6,7 +6,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>example.cassandra.bndrun</artifactId>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<build>
 		<plugins>
 			<plugin>
@@ -19,7 +19,7 @@
 						<bndrun>com.flairbit.example.cassandra.bndrun</bndrun>
 					</bndruns>
 					<targetDir>.</targetDir>
-				<failOnChanges>false</failOnChanges>
+					<failOnChanges>false</failOnChanges>
 				</configuration>
 				<executions>
 					<execution>
